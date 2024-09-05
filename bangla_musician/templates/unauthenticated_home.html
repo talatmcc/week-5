@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Musician Name</th>
+            <th>Email</th>
+            <th>Album Rating</th>
+            <th>Instrument Type</th>
+            <th>Album Name</th>
+            <th>Release Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for album in albums %}
+        <tr>
+            <td>{{ album.id }}</td>
+            <td><a href="{% url 'edit_musician' album.musician.id %}">{{ album.musician }}</a></td>
+            <td>{{ album.musician.email }}</td>
+            <td>{{ album.rating }}</td>
+            <td>{{ album.musician.instrument_type }}</td>
+            <td>{{ album.name }}</td>
+            <td>{{ album.release_date|date:"d-M-Y" }}</td>
+            <td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

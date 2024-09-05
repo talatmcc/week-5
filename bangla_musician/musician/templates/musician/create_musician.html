@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Musician</h2>
+{% comment %} <form method="post">
+    {% csrf_token %}
+    {% load crispy_forms_tags %}
+    {% crispy form %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> {% endcomment %}
+<!-- Example in create_musician.html -->
+{% comment %} <h2>Create Musician</h2> {% endcomment %}
+<form method="post">
+    {% csrf_token %}
+    {% load crispy_forms_tags %}
+    {{ form|crispy }}
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            Please correct the errors below.
+        </div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
