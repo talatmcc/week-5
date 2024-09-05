@@ -20,29 +20,20 @@
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Profile</a>
-                    </li>
-                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-                    </li> -->
+                    </li>
                     <li class="nav-item">
-                        <form method="POST" action="">
+                        <form method="POST" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-link nav-link">Logout</button>
                         </form>
-                        <!-- <form method="POST" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-link nav-link">Logout</button>
-                        </form> -->
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="{% url 'home' %}">Home</a> -->
-                        <a class="nav-link" href="">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="{% url 'signup' %}">Sign Up</a> -->
-                        <a class="nav-link" href="">Sign Up</a>
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
