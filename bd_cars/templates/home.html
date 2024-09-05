@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 d-flex-column align-items-center">
+        <h1>Welcome to BD Cars</h1>
+        <p>Discover your dream car at BD CARS. Our vast inventory features new and used vehicles, from luxury sedans to rugged SUVs. Find detailed information, compare models, and get personalized financing options. With a user-friendly search bar, featured cars, and a clear navigation menu, we make it easy to find your perfect drive. Start your journey today!</p>
+    </div>
+    <div class="col-md-6">
+        <img src="{% static 'images/car_image.jpg' %}" class="img-fluid" alt="Car Image">
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Filter by Brand</h2>
+            <div class="btn-group d-flex justify-content-between" role="group" aria-label="Brand Filter">
+                {% for brand in brands %}
+                    <a href="?brand_id={{ brand.id }}" class="btn btn-primary mx-4">{{ brand.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        {% for car in cars %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car.name }}</h5>
+                        <p class="card-text">Price: ${{ car.price }}</p>
+                        <p class="card-text">Brand: {{ car.brand.name }}</p>
+                        <a href="{% url 'car_detail' car.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No cars available for this brand.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
